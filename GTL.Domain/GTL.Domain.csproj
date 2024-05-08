@@ -10,4 +10,8 @@
     <Folder Include="DomainServices\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="EnsureThatCore" Version="1.0.0" />
+  </ItemGroup>
+
 </Project>
