@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GTL.Domain.Entities
+namespace GTL.Domain.DDD.Entities
 {
     public class Employee : Entity
     {

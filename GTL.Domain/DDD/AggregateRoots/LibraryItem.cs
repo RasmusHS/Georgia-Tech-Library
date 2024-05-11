@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GTL.Domain.AggregateRoots
+namespace GTL.Domain.DDD.AggregateRoots
 {
     public class LibraryItem : AggregateRoot
     {
-        public LibraryItem() 
+        public LibraryItem()
         {
-            
+
         }
 
         public string Type { get; set; }

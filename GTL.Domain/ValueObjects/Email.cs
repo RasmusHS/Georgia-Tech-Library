@@ -14,7 +14,7 @@ namespace GTL.Domain.ValueObjects
         /// <param name="value"></param>
         private Email(string value)
         {
-            this.Value = value;
+            Value = value;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace GTL.Domain.ValueObjects
             {
                 return Result.Fail<Email>(Errors.General.UnexpectedValue(nameof(email)));
             }
-            return Result.Ok<Email>(new Email(email));
+            return Result.Ok(new Email(email));
         }
 
         /// <summary>

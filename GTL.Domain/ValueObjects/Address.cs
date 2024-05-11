@@ -23,7 +23,7 @@ namespace GTL.Domain.ValueObjects
             Ensure.That(street, nameof(street)).IsNotNullOrEmpty();
             Ensure.That(city, nameof(city)).IsNotNullOrEmpty();
             Ensure.That(zipcode, nameof(zipcode)).IsNotNullOrEmpty();
-            return Result.Ok<Address>(new Address(street, city, zipcode));
+            return Result.Ok(new Address(street, city, zipcode));
         }
         protected override IEnumerable<object> GetEqualityComponents()
         {
