@@ -2,7 +2,7 @@
 
 namespace GTL.Application.Commands.Member
 {
-    internal class CreateMemberCommandHandler : ICommandHandler<CreateMemberCommand>
+    public class CreateMemberCommandHandler : ICommandHandler<CreateMemberCommand>
     {
         public CreateMemberCommandHandler() 
         {

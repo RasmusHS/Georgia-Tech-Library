@@ -32,6 +32,11 @@ namespace GTL.Domain.Models
             return Result.Ok(new Member(name, homeAddress, campusAddress, phoneNumber, email, type, ssn));
         }
 
+        public void Edit()
+        {
+
+        }
+
         public Guid MemberId { get; private set; }
         public string Name { get; private set; }
         public string HomeAddress { get; private set; }
@@ -45,9 +50,6 @@ namespace GTL.Domain.Models
         public List<BookBorrowings> Borrowings { get; private set; }
         public List<Book> Books { get; private set; }
 
-        public void Edit()
-        {
-
-        }
+        
     }
 }
