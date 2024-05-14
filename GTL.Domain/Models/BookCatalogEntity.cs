@@ -3,11 +3,11 @@ using GTL.Domain.Common;
 
 namespace GTL.Domain.Models
 {
-    public class BookCatalog : BaseEntity
+    public class BookCatalogEntity : BaseEntity
     {
-        public BookCatalog() { }
+        public BookCatalogEntity() { }
 
-        private BookCatalog(string isbn, string title, List<string> authors, string description, string subjectArea, string type, string edition, bool isAvailable) 
+        private BookCatalogEntity(string isbn, string title, List<string> authors, string description, string subjectArea, string type, string edition) 
         {
             BookCatalogId = Guid.NewGuid();
             ISBN = isbn;
@@ -17,10 +17,9 @@ namespace GTL.Domain.Models
             SubjectArea = subjectArea;
             Type = type;
             Edition = edition;
-            IsAvailable = isAvailable;
         }
 
-        public static Result<BookCatalog> Create(string isbn, string title, List<string> authors, string description, string subjectArea, string type, string edition, bool isAvailable)
+        public static Result<BookCatalogEntity> Create(string isbn, string title, List<string> authors, string description, string subjectArea, string type, string edition, bool isAvailable)
         {
             Ensure.That(isbn, nameof(isbn)).IsNotNullOrEmpty();
             Ensure.That(title, nameof(title)).IsNotNullOrEmpty();
@@ -29,8 +28,7 @@ namespace GTL.Domain.Models
             Ensure.That(subjectArea, nameof(subjectArea)).IsNotNullOrEmpty();
             Ensure.That(type, nameof(type)).IsNotNullOrEmpty();
             Ensure.That(edition, nameof(edition)).IsNotNullOrEmpty();
-            Ensure.That(isAvailable, nameof(isAvailable));
-            return Result.Ok(new BookCatalog(isbn, title, authors, description, subjectArea, type, edition, isAvailable));
+            return Result.Ok(new BookCatalogEntity(isbn, title, authors, description, subjectArea, type, edition));
         }
 
         public void Edit()
@@ -46,8 +44,7 @@ namespace GTL.Domain.Models
         public string SubjectArea { get; private set; }
         public string Type { get; private set; }
         public string Edition { get; private set; }
-        public bool IsAvailable { get; private set; }
 
-        public List<Book> Books { get; private set; }
+        public List<BookEntity> Books { get; private set; }
     }
 }

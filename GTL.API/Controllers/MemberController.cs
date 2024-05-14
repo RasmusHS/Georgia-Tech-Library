@@ -49,9 +49,9 @@ namespace GTL.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMembers()
         {
-            //GetAllMembersQuery query = new GetAllMembersQuery();
-            //var result = await _dispatcher.Dispatch(query);
-            //return FromResult(result);
+            GetAllMembersQuery query = new GetAllMembersQuery();
+            var result = await _dispatcher.Dispatch(query);
+            return FromResult(result);
         }
 
 

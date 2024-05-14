@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using GTL.Application.Data;
+using GTL.Infrastructure.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace GTL.Infrastructure
 {
@@ -6,6 +8,7 @@ namespace GTL.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             return services;
         }
     }

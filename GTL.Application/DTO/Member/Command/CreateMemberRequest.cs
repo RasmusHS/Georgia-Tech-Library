@@ -6,13 +6,13 @@ namespace GTL.Application.DTO.Member.Command
 {
     public class CreateMemberRequest
     {
-        public string Name { get; }
-        public string HomeAddress { get; }
-        public string CampusAddress { get; }
-        public string PhoneNumber { get; }
-        public string Email { get; }
-        public string Type { get; }
-        public string SSN { get; }
+        public string Name { get; set; }
+        public string HomeAddress { get; set; }
+        public string CampusAddress { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string Type { get; set; }
+        public string SSN { get; set; }
 
         public class Validator : AbstractValidator<CreateMemberRequest>
         {

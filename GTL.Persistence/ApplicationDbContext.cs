@@ -12,10 +12,10 @@ namespace GTL.Persistence
         {
         }
 
-        public DbSet<Book> BookEntities { get; set; }
-        public DbSet<BookBorrowings> BookBorrowingEntities { get; set; }
-        public DbSet<BookCatalog> BookCatalogEntities { get; set; }
-        public DbSet<Member> MemberEntities { get; set; }
+        public DbSet<BookEntity> BookEntities { get; set; }
+        public DbSet<BookBorrowingsEntity> BookBorrowingEntities { get; set; }
+        public DbSet<BookCatalogEntity> BookCatalogEntities { get; set; }
+        public DbSet<MemberEntity> MemberEntities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -3,11 +3,11 @@ using GTL.Domain.Common;
 
 namespace GTL.Domain.Models
 {
-    public class Member : BaseEntity
+    public class MemberEntity : BaseEntity
     {
-        public Member()  {   }
+        public MemberEntity()  {   }
 
-        private Member(string name, string homeAddress, string campusAddress, string phoneNumber, string email, string type, string ssn)
+        private MemberEntity(string name, string homeAddress, string campusAddress, string phoneNumber, string email, string type, string ssn)
         {
             MemberId = Guid.NewGuid();
             Name = name;
@@ -20,7 +20,7 @@ namespace GTL.Domain.Models
             CardExpirationDate = DateTime.Now.AddYears(4);
         }
 
-        public static Result<Member> Create(string name, string homeAddress, string campusAddress, string phoneNumber, string email, string type, string ssn)
+        public static Result<MemberEntity> Create(string name, string homeAddress, string campusAddress, string phoneNumber, string email, string type, string ssn)
         {
             Ensure.That(name, nameof(name)).IsNotNullOrEmpty();
             Ensure.That(homeAddress, nameof(homeAddress)).IsNotNullOrEmpty();
@@ -29,7 +29,7 @@ namespace GTL.Domain.Models
             Ensure.That(email, nameof(email)).IsNotNullOrEmpty();
             Ensure.That(type, nameof(type)).IsNotNullOrEmpty();
             Ensure.That(ssn, nameof(ssn)).IsNotNullOrEmpty();
-            return Result.Ok(new Member(name, homeAddress, campusAddress, phoneNumber, email, type, ssn));
+            return Result.Ok(new MemberEntity(name, homeAddress, campusAddress, phoneNumber, email, type, ssn));
         }
 
         public void Edit()
@@ -47,8 +47,8 @@ namespace GTL.Domain.Models
         public string SSN { get; private set; }
         public DateTime CardExpirationDate { get; private set; }
 
-        public List<BookBorrowings> Borrowings { get; private set; }
-        public List<Book> Books { get; private set; }
+        public List<BookBorrowingsEntity> Borrowings { get; private set; }
+        public List<BookEntity> Books { get; private set; }
 
         
     }

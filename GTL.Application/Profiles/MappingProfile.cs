@@ -12,10 +12,10 @@ namespace GTL.Application.Profiles
         public MappingProfile() 
         {
             //CreateMap<, >().ReverseMap();
-            CreateMap<Book, QueryBookDto>().ReverseMap();
-            CreateMap<BookBorrowings, QueryBookBorrowingsDto>().ReverseMap();
-            CreateMap<BookCatalog, QueryBookCatalogDto>().ReverseMap();
-            CreateMap<Member, QueryMemberDto>().ReverseMap();
+            CreateMap<BookEntity, QueryBookDto>().ReverseMap();
+            CreateMap<BookBorrowingsEntity, QueryBookBorrowingsDto>().ReverseMap();
+            CreateMap<BookCatalogEntity, QueryBookCatalogDto>().ReverseMap();
+            CreateMap<MemberEntity, QueryMemberDto>().ReverseMap();
         }
     }
 }

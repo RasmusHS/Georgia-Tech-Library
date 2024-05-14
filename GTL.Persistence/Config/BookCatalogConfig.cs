@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GTL.Persistence.Config
 {
-    public class BookCatalogConfig : IEntityTypeConfiguration<BookCatalog>
+    public class BookCatalogConfig : IEntityTypeConfiguration<BookCatalogEntity>
     {
-        public void Configure(EntityTypeBuilder<BookCatalog> builder)
+        public void Configure(EntityTypeBuilder<BookCatalogEntity> builder)
         {
             builder.ToTable("BookCatalog", "bookCatalog");
             builder.HasKey(x => x.BookCatalogId);

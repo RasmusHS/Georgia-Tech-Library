@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GTL.Persistence.Config
 {
-    public class BookBorrowingsConfig : IEntityTypeConfiguration<BookBorrowings>
+    public class BookBorrowingsConfig : IEntityTypeConfiguration<BookBorrowingsEntity>
     {
-        public void Configure(EntityTypeBuilder<BookBorrowings> builder)
+        public void Configure(EntityTypeBuilder<BookBorrowingsEntity> builder)
         {
             builder
                 .HasKey(x => new 
                 { 
-                    x.MemberId, 
-                    x.BookId 
+                    x.Members, 
+                    x.Books 
                 });
         }
     }

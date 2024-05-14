@@ -6,7 +6,6 @@ namespace GTL.Infrastructure.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-
         private ApplicationDbContext _context = null;
 
         private DbSet<T> table = null;
@@ -26,13 +25,13 @@ namespace GTL.Infrastructure.Repositories
             table.Add(obj);
         }
 
-        public T GetById(object id)
+        public async Task<T> GetById(object id)
         {
             //throw new NotImplementedException();
             return table.Find(id);
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
             //throw new NotImplementedException();
             return table.ToList();
