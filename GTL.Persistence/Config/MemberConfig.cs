@@ -8,14 +8,12 @@ namespace GTL.Persistence.Config
     {
         public void Configure(EntityTypeBuilder<MemberEntity> builder)
         {
-            builder.ToTable("Member", "member");
+            //builder.ToTable("Member", "member");
             builder.HasKey(x => x.MemberId);
             builder
-                .HasMany(e => e.Books)
-                .WithMany(e => e.Members)
-                .UsingEntity<BookBorrowingsEntity>(
-                l => l.HasOne<BookEntity>(e => e.Books).WithMany(e => e.Borrowings),
-                r => r.HasOne<MemberEntity>(e => e.Members).WithMany(e => e.Borrowings));
+                .HasMany(x => x.Borrowings)
+                .WithOne(x => x.Members)
+                .HasForeignKey(x => x.MemberId);
         }
     }
 }

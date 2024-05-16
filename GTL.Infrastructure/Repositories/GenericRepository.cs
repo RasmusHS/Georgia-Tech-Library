@@ -1,4 +1,5 @@
 ﻿using GTL.Application.Data;
+using GTL.Domain.Common;
 using GTL.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,11 +19,12 @@ namespace GTL.Infrastructure.Repositories
             table = _context.Set<T>();
         }
 
-        public void Insert(T obj)
+        public async Task<T> Insert(T obj)
         {
             //throw new NotImplementedException();
             //It will mark the Entity state as Added State
             table.Add(obj);
+            return Result.Ok<T>(obj);
         }
 
         public async Task<T> GetById(object id)

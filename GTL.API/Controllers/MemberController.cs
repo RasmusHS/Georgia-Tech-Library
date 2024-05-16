@@ -35,7 +35,8 @@ namespace GTL.API.Controllers
                     request.PhoneNumber,
                     request.Email,
                     request.Type,
-                    request.SSN);
+                    request.SSN,
+                    request.EmployeePosition);
                 var commandResult = await _dispatcher.Dispatch(command);
                 return FromResult(commandResult);
             }

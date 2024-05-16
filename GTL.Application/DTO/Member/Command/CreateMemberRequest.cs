@@ -8,11 +8,12 @@ namespace GTL.Application.DTO.Member.Command
     {
         public string Name { get; set; }
         public string HomeAddress { get; set; }
-        public string CampusAddress { get; set; }
+        public string? CampusAddress { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Type { get; set; }
         public string SSN { get; set; }
+        public string? EmployeePosition { get; set; }
 
         public class Validator : AbstractValidator<CreateMemberRequest>
         {

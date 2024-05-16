@@ -12,19 +12,22 @@ namespace GTL.Persistence
         {
         }
 
-        public DbSet<BookEntity> BookEntities { get; set; }
-        public DbSet<BookBorrowingsEntity> BookBorrowingEntities { get; set; }
-        public DbSet<BookCatalogEntity> BookCatalogEntities { get; set; }
+        public DbSet<AcquisitionEntity> AcquisitionEntities { get; set; }
+        public DbSet<AuthorEntity> AuthorEntities { get; set; }
+        public DbSet<ItemBorrowingsEntity> ItemBorrowingEntities { get; set; }
+        public DbSet<ItemCatalogEntity> ItemCatalogEntities { get; set; }
+        public DbSet<ItemEntity> ItemEntities { get; set; }
         public DbSet<MemberEntity> MemberEntities { get; set; }
+        public DbSet<ReserveItemEntity> ReserveItemEntities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
-            modelBuilder
-                .ApplyConfiguration(new MemberConfig())
-                .ApplyConfiguration(new BookCatalogConfig())
-                .ApplyConfiguration(new BookConfig());
+            //modelBuilder
+            //    .ApplyConfiguration(new MemberConfig())
+            //    .ApplyConfiguration(new BookCatalogConfig())
+            //    .ApplyConfiguration(new BookConfig());
         }
     }
 }

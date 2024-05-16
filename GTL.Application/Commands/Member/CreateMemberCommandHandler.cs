@@ -1,17 +1,36 @@
-﻿using GTL.Domain.Common;
+﻿using GTL.Application.Data;
+using GTL.Domain.Common;
+using GTL.Domain.Models;
 
 namespace GTL.Application.Commands.Member
 {
     public class CreateMemberCommandHandler : ICommandHandler<CreateMemberCommand>
     {
-        public CreateMemberCommandHandler() 
+        private readonly IGenericRepository<MemberEntity> _repository;
+        public CreateMemberCommandHandler(IGenericRepository<MemberEntity> repository) 
         {
-            
+            _repository = repository;
         }
 
-        public Task<Result> Handle(CreateMemberCommand command, CancellationToken cancellationToken = default)
+        public async Task<Result> Handle(CreateMemberCommand command, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            Result<MemberEntity> memberResult = MemberEntity.Create
+                (
+                command.Name, 
+                command.HomeAddress, 
+                command.CampusAddress,
+                command.PhoneNumber,
+                command.Email,
+                command.Type,
+                command.SSN,
+                command.EmployeePosition
+                );
+            if (memberResult.Failure) return memberResult;
+
+            var member = await _repository.Insert(memberResult);
+            _repository.Save();
+            return Result.Ok(member);
+            
         }
     }
 }

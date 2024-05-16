@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 // åben Package Manager Console
 // Add-Migration
-// Name: 
+// Name: Initial
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
