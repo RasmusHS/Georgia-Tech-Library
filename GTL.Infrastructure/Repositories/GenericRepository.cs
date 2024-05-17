@@ -19,7 +19,7 @@ namespace GTL.Infrastructure.Repositories
             table = _context.Set<T>();
         }
 
-        public async Task<T> Insert(T obj)
+        public async Task<T> InsertAsync(T obj)
         {
             //throw new NotImplementedException();
             //It will mark the Entity state as Added State
@@ -27,25 +27,26 @@ namespace GTL.Infrastructure.Repositories
             return Result.Ok<T>(obj);
         }
 
-        public async Task<T> GetById(object id)
+        public async Task<T> GetByIdAsync(object id)
         {
             //throw new NotImplementedException();
             return table.Find(id);
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             //throw new NotImplementedException();
             return table.ToList();
         }
 
-        public void Update(T obj)
+        public async Task<T> UpdateAsync(T obj)
         {
             //throw new NotImplementedException();
             //First attach the object to the table
             table.Attach(obj);
             //Then set the state of the Entity as Modified
             _context.Entry(obj).State = EntityState.Modified;
+            return Result.Ok<T>(obj);
         }
 
         public void Delete(object id)

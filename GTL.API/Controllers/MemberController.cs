@@ -22,9 +22,9 @@ namespace GTL.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateMember(CreateMemberRequest request)
+        public async Task<IActionResult> CreateMember(CreateMemberRequestDto request)
         {
-            CreateMemberRequest.Validator validator = new CreateMemberRequest.Validator();
+            CreateMemberRequestDto.Validator validator = new CreateMemberRequestDto.Validator();
             var result = validator.Validate(request);
             if (result.IsValid)
             {
@@ -55,6 +55,41 @@ namespace GTL.API.Controllers
             return FromResult(result);
         }
 
+        [HttpGet]
+        [Route("{memberId}")]
+        public async Task<IActionResult> GetMember(Guid memberId)
+        {
+            var result = await _dispatcher.Dispatch(new GetMemberQuery(memberId));
+            return FromResult(result);
+        }
 
+        [HttpPut]
+        [Route("{memberId}")]
+        public async Task<IActionResult> UpdateMember(UpdateMemberRequestDto request)
+        {
+            UpdateMemberCommand command = new UpdateMemberCommand(
+                request.MemberId,
+                request.Name,
+                request.HomeAddress,
+                request.CampusAddress,
+                request.PhoneNumber,
+                request.Email,
+                request.Type,
+                request.SSN,
+                request.CardExpirationDate,
+                request.EmployeePosition,
+                request.RowVersion
+                );
+            var result = await _dispatcher.Dispatch(command);
+            return FromResult(result);
+        }
+
+        [HttpDelete]
+        [Route("{memberId}")]
+        public async Task<IActionResult> DeleteMember(Guid memberId)
+        {
+            var result = await _dispatcher.Dispatch(new DeleteMemberCommand(memberId));
+            return FromResult(result);
+        }
     }
 }

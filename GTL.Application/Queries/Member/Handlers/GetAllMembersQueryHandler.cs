@@ -10,6 +10,7 @@ namespace GTL.Application.Queries.Member.Handlers
     {
         private readonly IMapper _mapper;
         private readonly IGenericRepository<MemberEntity> _repository;
+
         public GetAllMembersQueryHandler(IGenericRepository<MemberEntity> repository, IMapper mapper) 
         { 
             _mapper = mapper;
@@ -20,7 +21,7 @@ namespace GTL.Application.Queries.Member.Handlers
         {
             //throw new NotImplementedException();
             List<QueryMemberDto> result = new List<QueryMemberDto>();
-            var members = await _repository.GetAll();
+            var members = await _repository.GetAllAsync();
             foreach (var member in members) 
             {
                 QueryMemberDto dto = new QueryMemberDto();

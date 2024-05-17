@@ -1,10 +1,9 @@
 ﻿using FluentValidation;
 using GTL.Domain.Common;
-using GTL.Domain.ValueObjects;
 
 namespace GTL.Application.DTO.Member.Command
 {
-    public class CreateMemberRequest
+    public class CreateMemberRequestDto
     {
         public string Name { get; set; }
         public string HomeAddress { get; set; }
@@ -15,7 +14,7 @@ namespace GTL.Application.DTO.Member.Command
         public string SSN { get; set; }
         public string? EmployeePosition { get; set; }
 
-        public class Validator : AbstractValidator<CreateMemberRequest>
+        public class Validator : AbstractValidator<CreateMemberRequestDto>
         {
             public Validator() 
             {

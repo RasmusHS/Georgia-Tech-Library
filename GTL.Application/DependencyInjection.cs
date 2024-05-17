@@ -14,40 +14,31 @@ namespace GTL.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-            //services.AddScoped<IDispatcher, Dispatcher>();
-
             services.AddScoped<IDispatcher>(sp => new Dispatcher(sp.GetService<IMediator>()));
-            //services.AddScoped(typeof(ICommand), typeof(ICommandHandler<>));
-            //services.AddScoped(typeof(IQuery<>), typeof(IQueryHandler<,>));
 
-            //services.AddScoped<, >();
-            // Book
-            //services.AddScoped(typeof(ICommand), typeof(CreateMemberCommand));
-            services.AddScoped(typeof(ICommandHandler<CreateMemberCommand>), typeof(CreateMemberCommandHandler));
-            //services.AddScoped(typeof(IQuery<QueryMemberDto>), typeof(GetMemberQuery));
-            services.AddScoped(typeof(IQueryHandler<GetMemberQuery, QueryMemberDto>), typeof(GetMemberQueryHandler));
-            //services.AddScoped<,>();
+            // Item
+            //services.AddScoped(typeof(), typeof());
+            //services.AddScoped(typeof(), typeof());
+            //services.AddScoped(typeof(), typeof());
+            //services.AddScoped(typeof(), typeof());
 
-            // BookBorrowings
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
+            // ItemBorrowings
+            //services.AddScoped(typeof(), typeof());
+            //services.AddScoped(typeof(), typeof());
+            //services.AddScoped(typeof(), typeof());
+            //services.AddScoped(typeof(), typeof());
 
-            // BookCatalog
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
+            // ItemCatalog
+            //services.AddScoped(typeof(), typeof());
+            //services.AddScoped(typeof(), typeof());
+            //services.AddScoped(typeof(), typeof());
+            //services.AddScoped(typeof(), typeof());
 
             // Member
-            //services.AddScoped<, >();
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
-            //services.AddScoped<,>();
+            services.AddScoped(typeof(ICommandHandler<CreateMemberCommand>), typeof(CreateMemberCommandHandler));
+            services.AddScoped(typeof(IQueryHandler<GetMemberQuery, QueryMemberDto>), typeof(GetMemberQueryHandler));
+            services.AddScoped(typeof(ICommandHandler<UpdateMemberCommand>), typeof(UpdateMemberCommandHandler));
+            services.AddScoped(typeof(ICommandHandler<DeleteMemberCommand>), typeof(DeleteMemberCommandHandler));
 
             return services;
         }

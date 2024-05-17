@@ -7,6 +7,7 @@ namespace GTL.Application.Commands.Member
     public class CreateMemberCommandHandler : ICommandHandler<CreateMemberCommand>
     {
         private readonly IGenericRepository<MemberEntity> _repository;
+
         public CreateMemberCommandHandler(IGenericRepository<MemberEntity> repository) 
         {
             _repository = repository;
@@ -27,7 +28,7 @@ namespace GTL.Application.Commands.Member
                 );
             if (memberResult.Failure) return memberResult;
 
-            var member = await _repository.Insert(memberResult);
+            var member = await _repository.InsertAsync(memberResult);
             _repository.Save();
             return Result.Ok(member);
             
