@@ -26,6 +26,7 @@ namespace GTL.Application.DTO.Member.Command
                 RuleFor(r => r.Email).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(Email)).Code);
                 RuleFor(r => r.Email).EmailAddress().WithMessage(Errors.General.UnexpectedValue(nameof(Email)).Code);
                 RuleFor(r => r.RowVersion).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(RowVersion)).Code);
+                RuleFor(r => r.RowVersion).NotNull().WithMessage(Errors.General.ValueIsRequired(nameof(RowVersion)).Code);
             }
         }
     }

@@ -3,6 +3,8 @@ using GTL.Application;
 using GTL.Application.Commands.Author;
 using GTL.Application.Commands.ItemCatalog;
 using GTL.Application.DTO.ItemCatalog.Command;
+using GTL.Application.DTO.ItemCatalog.Command.WithAuthors;
+using GTL.Application.Queries.ItemCatalog;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,7 +37,7 @@ namespace GTL.API.Controllers
                     request.SubjectArea,
                     request.Type,
                     request.Edition,
-                    request.Authors.Select(x => new CreateAuthorToNewItemCatalogCommand
+                    request.Authors.Select(x => new CreateAuthorCommand
                     {
                         ItemCatalogId = x.ItemCatalogId,
                         Name = x.Name
@@ -53,9 +55,39 @@ namespace GTL.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCatalogEntries()
         {
-            GetAllCatalogEntriesQuery query = new GetAllCatalogEntriesQuery();
+            GetAllItemCatalogEntriesQuery query = new GetAllItemCatalogEntriesQuery();
             var result = await _dispatcher.Dispatch(query);
             return FromResult(result);
+        }
+
+        [HttpGet]
+        [Route("{itemCatalogId}")]
+        public async Task<IActionResult> GetCatalogEntry(Guid itemCatalogId)
+        {
+            var result = await _dispatcher.Dispatch(new GetItemCatalogEntryQuery(itemCatalogId));
+            return FromResult(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateCatalogEntry(UpdateCatalogEntryRequestDto request)
+        {
+            UpdateCatalogEntryCommand command = new UpdateCatalogEntryCommand(
+                request.ItemCatalogId,
+                request.ISBN,
+                request.Title,
+                request.Description,
+                request.SubjectArea,
+                request.Type,
+                request.Edition,
+                request.Authors.Select(x => new UpdateAuthorCommand
+                {
+                    ItemCatalogId = x.ItemCatalogId,
+                    Name = x.Name,
+                    RowVersion = x.RowVersion
+                }).ToList(),
+                request.RowVersion);
+            var commandResult = await _dispatcher.Dispatch(command);
+            return FromResult(commandResult);
         }
     }
 }

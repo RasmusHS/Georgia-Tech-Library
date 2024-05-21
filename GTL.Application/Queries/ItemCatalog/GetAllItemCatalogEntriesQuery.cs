@@ -2,7 +2,7 @@
 
 namespace GTL.Application.Queries.ItemCatalog
 {
-    public class GetAllCatalogEntriesQuery : IQuery<CollectionResponseBase<QueryItemCatalogDto>>
+    public class GetAllItemCatalogEntriesQuery : IQuery<CollectionResponseBase<QueryItemCatalogDto>>
     {
     }
 }

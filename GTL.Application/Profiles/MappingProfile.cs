@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GTL.Application.DTO.Author.Query;
 using GTL.Application.DTO.Item.Query;
 using GTL.Application.DTO.ItemBorrowerings.Query;
 using GTL.Application.DTO.ItemCatalog.Query;
@@ -16,6 +17,7 @@ namespace GTL.Application.Profiles
             CreateMap<ItemBorrowingsEntity, QueryItemBorrowingsDto>().ReverseMap();
             CreateMap<ItemCatalogEntity, QueryItemCatalogDto>().ReverseMap();
             CreateMap<MemberEntity, QueryMemberDto>().ReverseMap();
+            CreateMap<AuthorEntity, QueryAuthorDto>().ReverseMap();
         }
     }
 }

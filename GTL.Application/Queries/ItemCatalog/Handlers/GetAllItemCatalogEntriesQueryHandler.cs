@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using GTL.Application.Data;
+using GTL.Application.DTO.Author.Query;
 using GTL.Application.DTO.ItemCatalog.Query;
 using GTL.Domain.Common;
 using GTL.Domain.Models;
 
 namespace GTL.Application.Queries.ItemCatalog.Handlers
 {
-    public class GetAllItemCatalogEntriesQueryHandler : IQueryHandler<GetAllCatalogEntriesQuery, CollectionResponseBase<QueryItemCatalogDto>>
+    public class GetAllItemCatalogEntriesQueryHandler : IQueryHandler<GetAllItemCatalogEntriesQuery, CollectionResponseBase<QueryItemCatalogDto>>
     {
         private readonly IMapper _mapper;
         private readonly IGenericRepository<ItemCatalogEntity> _catalogRepository;
@@ -19,9 +20,36 @@ namespace GTL.Application.Queries.ItemCatalog.Handlers
             _mapper = mapper;
         }
 
-        public Task<Result<CollectionResponseBase<QueryItemCatalogDto>>> Handle(GetAllCatalogEntriesQuery query, CancellationToken cancellationToken = default)
+        public async Task<Result<CollectionResponseBase<QueryItemCatalogDto>>> Handle(GetAllItemCatalogEntriesQuery query, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            List<QueryItemCatalogDto> result = new List<QueryItemCatalogDto>();
+            var catalogEntries = await _catalogRepository.GetAllAsync();
+            foreach (var catalogEntry in catalogEntries) 
+            {
+                QueryItemCatalogDto dto = new QueryItemCatalogDto();
+                dto.ISBN = catalogEntry.ISBN;
+                dto.Title = catalogEntry.Title;
+                dto.Description = catalogEntry.Description;
+                dto.SubjectArea = catalogEntry.SubjectArea;
+                dto.Type = catalogEntry.Type;
+                dto.Edition = catalogEntry.Edition;
+
+                var authors = await _authorRepository.GetAllAsync();
+                foreach (var author in authors)
+                {
+                    dto.Authors.Add(new QueryAuthorDto 
+                    { 
+                        ItemCatalogId = author.ItemCatalogId,
+                        Name = author.Name
+                    });
+                }
+
+                result.Add(dto);
+            }
+            return new CollectionResponseBase<QueryItemCatalogDto>()
+            {
+                Data = result
+            };
         }
     }
 }

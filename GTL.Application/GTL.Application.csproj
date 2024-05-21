@@ -28,4 +28,8 @@
     <ProjectReference Include="..\GTL.Domain\GTL.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\ItemCatalog\WithAuthor\" />
+  </ItemGroup>
+
 </Project>

@@ -4,7 +4,7 @@ namespace GTL.Application.Commands.ItemCatalog
 {
     public class CreateCatalogEntryWithAuthorsCommand : ICommand
     {
-        public CreateCatalogEntryWithAuthorsCommand(string? isbn, string title, string description, string subjectArea, string type, string? edition, List<CreateAuthorToNewItemCatalogCommand> authors)
+        public CreateCatalogEntryWithAuthorsCommand(string? isbn, string title, string description, string subjectArea, string type, string? edition, List<CreateAuthorCommand> authors)
         {
             ISBN = isbn;
             Title = title;
@@ -21,6 +21,6 @@ namespace GTL.Application.Commands.ItemCatalog
         public string SubjectArea { get; }
         public string Type { get; }
         public string? Edition { get; }
-        public List<CreateAuthorToNewItemCatalogCommand> Authors { get; }
+        public List<CreateAuthorCommand> Authors { get; }
     }
 }

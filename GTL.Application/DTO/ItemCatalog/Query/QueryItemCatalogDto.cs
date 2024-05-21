@@ -4,7 +4,7 @@ namespace GTL.Application.DTO.ItemCatalog.Query
 {
     public class QueryItemCatalogDto
     {
-        public QueryItemCatalogDto(Guid itemCatalogId, string? isbn, string title, string description, string subjectArea, string type, string? edition, List<QueryAuthorDto> authors)
+        public QueryItemCatalogDto(Guid itemCatalogId, string? isbn, string title, string description, string subjectArea, string type, string? edition, List<QueryAuthorDto>? authors)
         {
             ItemCatalogId = itemCatalogId;
             ISBN = isbn;
@@ -25,6 +25,6 @@ namespace GTL.Application.DTO.ItemCatalog.Query
         public string SubjectArea { get; set; }
         public string Type { get; set; }
         public string? Edition { get; set; }
-        public List<QueryAuthorDto> Authors { get; set; }
+        public List<QueryAuthorDto>? Authors { get; set; }
     }
 }
