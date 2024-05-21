@@ -2,7 +2,7 @@
 {
     public class QueryMemberDto
     {
-        public QueryMemberDto(Guid memberId, string name, string homeAddress, string? campusAddress, string phoneNumber, string email, string type, string ssn, DateTime cardExpirationDate, string? employeePosition)
+        public QueryMemberDto(Guid memberId, string name, string homeAddress, string? campusAddress, string phoneNumber, string email, string type, string ssn, DateTime cardExpirationDate, string? employeePosition, byte[] rowVersion)
         {
             MemberId = memberId;
             Name = name;
@@ -14,6 +14,7 @@
             SSN = ssn;
             CardExpirationDate = cardExpirationDate;
             EmployeePosition = employeePosition;
+            RowVersion = rowVersion;    
         }
 
         public QueryMemberDto() { }
@@ -28,5 +29,6 @@
         public string SSN { get; set; }
         public DateTime CardExpirationDate { get; set; }
         public string? EmployeePosition { get; set; }
+        public byte[] RowVersion { get; set; }
     }
 }

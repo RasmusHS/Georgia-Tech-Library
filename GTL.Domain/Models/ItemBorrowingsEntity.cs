@@ -7,10 +7,8 @@ namespace GTL.Domain.Models
     {
         public ItemBorrowingsEntity() { }
         
-        private ItemBorrowingsEntity(/*MemberEntity members, BookEntity books,*/ Guid memberId, Guid itemId, DateTime due, DateTime startDate, DateTime? returnedDate) 
+        private ItemBorrowingsEntity(Guid memberId, Guid itemId, DateTime due, DateTime startDate, DateTime? returnedDate) 
         { 
-            //Members = members;
-            //Books = books;
             MemberId = memberId;
             ItemId = itemId;
             Due = due;
@@ -18,19 +16,24 @@ namespace GTL.Domain.Models
             ReturnedDate = returnedDate;
         }
 
-        public static Result<ItemBorrowingsEntity> Create(/*MemberEntity members, BookEntity books,*/Guid memberId, Guid itemId, DateTime due, DateTime startDate, DateTime? returnedDate) 
+        public static Result<ItemBorrowingsEntity> Create(Guid memberId, Guid itemId, DateTime due, DateTime startDate, DateTime? returnedDate) 
         {
             Ensure.That(memberId, nameof(memberId)).IsNotEmpty();
             Ensure.That(itemId, nameof(itemId)).IsNotEmpty();
             Ensure.That(due, nameof(due));
             Ensure.That(startDate, nameof(startDate));
             Ensure.That(returnedDate, nameof(returnedDate));
-            return Result.Ok(new ItemBorrowingsEntity(/*members, books,*/memberId, itemId, due, startDate, returnedDate));
+            return Result.Ok(new ItemBorrowingsEntity(memberId, itemId, due, startDate, returnedDate));
         }
 
-        public void Edit()
+        public void Edit(Guid memberId, Guid itemId, DateTime due, DateTime startDate, DateTime? returnedDate, byte[] rowVersion)
         {
-
+            MemberId = memberId;
+            ItemId = itemId;
+            Due = due;
+            StartDate = startDate;
+            ReturnedDate = returnedDate;
+            RowVersion = rowVersion;
         }
 
         public Guid MemberId { get; private set; }

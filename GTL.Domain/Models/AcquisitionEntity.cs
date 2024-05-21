@@ -3,7 +3,7 @@ using GTL.Domain.Common;
 
 namespace GTL.Domain.Models
 {
-    public class AcquisitionEntity
+    public class AcquisitionEntity : BaseEntity
     {
         public AcquisitionEntity() { }
 
@@ -21,6 +21,15 @@ namespace GTL.Domain.Models
             Ensure.That(itemCatalogId, nameof(itemCatalogId)).IsNotEmpty();
             Ensure.That(amount, nameof(amount)).IsGt(0);
             return Result.Ok(new AcquisitionEntity(memberId, itemCatalogId, amount));
+        }
+
+        public void Edit(Guid memberId, Guid itemCatalogId, int amount, DateTime requestDate, byte[] rowVersion)
+        {
+            MemberId = memberId;
+            ItemCatalogId = itemCatalogId;
+            Amount = amount;
+            RequestDate = requestDate;
+            RowVersion = rowVersion;
         }
 
         public Guid ItemCatalogId { get; private set; }

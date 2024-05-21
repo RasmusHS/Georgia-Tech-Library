@@ -64,7 +64,6 @@ namespace GTL.API.Controllers
         }
 
         [HttpPut]
-        [Route("{memberId}")]
         public async Task<IActionResult> UpdateMember(UpdateMemberRequestDto request)
         {
             UpdateMemberCommand command = new UpdateMemberCommand(

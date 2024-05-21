@@ -17,7 +17,8 @@ namespace GTL.Application.Commands.Member
         public async Task<Result> Handle(DeleteMemberCommand command, CancellationToken cancellationToken = default)
         {
             Ensure.That(command).IsNotNull();
-            await Task.Run(() => _repository.Delete(command));
+            await Task.Run(() => _repository.Delete(command.MemberId));
+            _repository.Save();
             return Result.Ok();
         }
     }

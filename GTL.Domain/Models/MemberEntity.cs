@@ -34,9 +34,9 @@ namespace GTL.Domain.Models
             return Result.Ok(new MemberEntity(name, homeAddress, campusAddress, phoneNumber, email, type, ssn, employeePosition));
         }
 
-        public void Edit(Guid memberId, string name, string homeAddress, string? campusAddress, string phoneNumber, string email, string type, string ssn, DateTime cardExpirationDate, string? employeePosition, byte[] rowVersion)
+        public void Edit(/*Guid memberId, */string name, string homeAddress, string? campusAddress, string phoneNumber, string email, string type, string ssn, DateTime cardExpirationDate, string? employeePosition, byte[] rowVersion)
         {
-            MemberId = memberId;
+            //MemberId = memberId;
             Name = name;
             HomeAddress = homeAddress;
             CampusAddress = campusAddress;
@@ -46,6 +46,7 @@ namespace GTL.Domain.Models
             SSN = ssn;
             CardExpirationDate = cardExpirationDate;
             EmployeePosition = employeePosition;
+            RowVersion = rowVersion;
         }
 
         public Guid MemberId { get; private set; }

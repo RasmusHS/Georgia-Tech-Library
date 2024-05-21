@@ -6,6 +6,6 @@ namespace GTL.Domain
     {
         //public Guid Id { get; set; } = Guid.NewGuid();
         [Timestamp]
-        public byte[] RowVersion { get; private set; }
+        public byte[] RowVersion { get; set; }
     }
 }

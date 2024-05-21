@@ -19,7 +19,6 @@ namespace GTL.Application.Queries.Member.Handlers
 
         public async Task<Result<CollectionResponseBase<QueryMemberDto>>> Handle(GetAllMembersQuery query, CancellationToken cancellationToken = default)
         {
-            //throw new NotImplementedException();
             List<QueryMemberDto> result = new List<QueryMemberDto>();
             var members = await _repository.GetAllAsync();
             foreach (var member in members) 

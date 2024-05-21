@@ -20,7 +20,7 @@ namespace GTL.Application.Commands.Member
 
             // Edit
             model.Edit(
-                command.MemberId, 
+                //command.MemberId, 
                 command.Name, 
                 command.HomeAddress, 
                 command.CampusAddress, 

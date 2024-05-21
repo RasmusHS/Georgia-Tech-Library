@@ -7,26 +7,29 @@ namespace GTL.Domain.Models
     {
         public ItemEntity() { }
 
-        private ItemEntity(/*BookCatalogEntity catalog*/ Guid itemCatalogId, bool isLendable, DateTime dateCreated, string condition) 
+        private ItemEntity(Guid itemCatalogId, bool isLendable, DateTime dateCreated, string condition) 
         { 
             ItemId = Guid.NewGuid();
             ItemCatalogId = itemCatalogId;
-            //Catalog = catalog;
             IsLendable = isLendable;
         }
 
-        public static Result<ItemEntity> Create(/*BookCatalogEntity catalog*/ Guid itemCatalogId, bool isLendable, DateTime dateCreated, string condition) 
+        public static Result<ItemEntity> Create(Guid itemCatalogId, bool isLendable, DateTime dateCreated, string condition) 
         {
             Ensure.That(itemCatalogId, nameof(itemCatalogId)).IsNotEmpty();
             Ensure.That(isLendable, nameof(isLendable));
             Ensure.That(dateCreated, nameof(dateCreated));
             Ensure.That(condition, nameof(condition)).IsNotNullOrEmpty();
-            return Result.Ok(new ItemEntity(/*catalog*/ itemCatalogId, isLendable, dateCreated, condition));
+            return Result.Ok(new ItemEntity(itemCatalogId, isLendable, dateCreated, condition));
         }
 
-        public void Edit()
+        public void Edit(Guid itemCatalogId, bool isLendable, DateTime dateCreated, string condition, byte[] rowVersion)
         {
-
+            ItemCatalogId = itemCatalogId;
+            IsLendable = isLendable;
+            DateCreated = dateCreated;
+            Condition = condition;
+            RowVersion = rowVersion;
         }
 
         public Guid ItemId { get; private set; }
