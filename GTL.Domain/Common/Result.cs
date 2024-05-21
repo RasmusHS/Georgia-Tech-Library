@@ -38,6 +38,11 @@ namespace GTL.Domain.Common
             return new Result<T>(value, true, null);
         }
 
+        public static Result<IEnumerable<T>> Ok<T>(IEnumerable<T> values)
+        {
+            return new Result<IEnumerable<T>>(values, true, null);
+        }
+
         public static Result Combine(params Result[] results)
         {
             foreach (Result result in results)

@@ -26,6 +26,12 @@ namespace GTL.Infrastructure.Repositories
             return Result.Ok<T>(obj);
         }
 
+        public async Task<IEnumerable<T>> InsertRangeAsync(List<T> obj)
+        {
+            await table.AddRangeAsync(obj);
+            return Result<IEnumerable<T>>.Ok<T>(obj).Value;
+        }
+
         public async Task<T> GetByIdAsync(object id)
         {
             return table.Find(id);
@@ -62,5 +68,7 @@ namespace GTL.Infrastructure.Repositories
         {
             _context.SaveChanges();
         }
+
+        
     }
 }

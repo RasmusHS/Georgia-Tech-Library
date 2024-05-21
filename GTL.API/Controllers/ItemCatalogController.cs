@@ -89,5 +89,13 @@ namespace GTL.API.Controllers
             var commandResult = await _dispatcher.Dispatch(command);
             return FromResult(commandResult);
         }
+
+        [HttpDelete]
+        [Route("{itemCatalogId}")]
+        public async Task<IActionResult> DeleteCatalogEntry(Guid itemCatalogId)
+        {
+            var result = await _dispatcher.Dispatch(new DeleteCatalogEntryCommand(itemCatalogId));
+            return FromResult(result);
+        }
     }
 }
