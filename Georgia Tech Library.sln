@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTL.Persistence", "GTL.Pers
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{30452E19-3F91-43E4-AD87-17D590672552}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.Domain.Test", "GTL.Domain.Test\GTL.Domain.Test.csproj", "{03CB1353-8012-4F3A-9995-D824A89233B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTL.Domain.Test", "GTL.Domain.Test\GTL.Domain.Test.csproj", "{03CB1353-8012-4F3A-9995-D824A89233B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.Application.Test", "GTL.Application.Test\GTL.Application.Test.csproj", "{6D12D45E-6819-463D-AE18-A90FB2BE682F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTL.Application.Test", "GTL.Application.Test\GTL.Application.Test.csproj", "{6D12D45E-6819-463D-AE18-A90FB2BE682F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTL.Crosscut", "GTL.Crosscut\GTL.Crosscut.csproj", "{F11B0C79-3410-455E-AF71-F894D6FA5021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{6D12D45E-6819-463D-AE18-A90FB2BE682F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D12D45E-6819-463D-AE18-A90FB2BE682F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D12D45E-6819-463D-AE18-A90FB2BE682F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F11B0C79-3410-455E-AF71-F894D6FA5021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F11B0C79-3410-455E-AF71-F894D6FA5021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F11B0C79-3410-455E-AF71-F894D6FA5021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F11B0C79-3410-455E-AF71-F894D6FA5021}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
