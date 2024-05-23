@@ -12,6 +12,8 @@ namespace GTL.Domain.Models
             ItemId = Guid.NewGuid();
             ItemCatalogId = itemCatalogId;
             IsLendable = isLendable;
+            DateCreated = DateTime.Now;
+            Condition = condition;
         }
 
         public static Result<ItemEntity> Create(Guid itemCatalogId, bool isLendable, DateTime dateCreated, string condition) 

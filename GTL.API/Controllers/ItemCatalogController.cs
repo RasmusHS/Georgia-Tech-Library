@@ -1,9 +1,14 @@
 ﻿using AutoMapper;
 using GTL.Application;
+using GTL.Application.Commands.Acquisitions;
 using GTL.Application.Commands.Author;
+using GTL.Application.Commands.Item;
 using GTL.Application.Commands.ItemCatalog;
+using GTL.Application.Commands.ItemCatalog.WithAcquisitions;
+using GTL.Application.Commands.ItemCatalog.WithItems;
 using GTL.Application.DTO.ItemCatalog.Command;
-using GTL.Application.DTO.ItemCatalog.Command.WithAuthors;
+using GTL.Application.DTO.ItemCatalog.Command.WithAcquisitions;
+using GTL.Application.DTO.ItemCatalog.Command.WithItem;
 using GTL.Application.Queries.ItemCatalog;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,14 +28,15 @@ namespace GTL.API.Controllers
             _dispatcher = dispatcher;
         }
 
+        [Route("createCatalogEntryWithItems")]
         [HttpPost]
-        public async Task<IActionResult> CreateCatalogEntry(CreateCatalogEntryWithAuthorsRequestDto request)
+        public async Task<IActionResult> CreateCatalogEntryWithItems(CreateCatalogEntryWithItemsRequestDto request)
         {
-            CreateCatalogEntryWithAuthorsRequestDto.Validator validator = new CreateCatalogEntryWithAuthorsRequestDto.Validator();
+            CreateCatalogEntryWithItemsRequestDto.Validator validator = new CreateCatalogEntryWithItemsRequestDto.Validator();
             var result = validator.Validate(request);
             if (result.IsValid)
             {
-                CreateCatalogEntryWithAuthorsCommand command = new CreateCatalogEntryWithAuthorsCommand(
+                CreateCatalogEntryWithItemsCommand command = new CreateCatalogEntryWithItemsCommand(
                     request.ISBN,
                     request.Title,
                     request.Description,
@@ -41,6 +47,50 @@ namespace GTL.API.Controllers
                     {
                         ItemCatalogId = x.ItemCatalogId,
                         Name = x.Name
+                    }).ToList(),
+                    request.Items.Select(x => new CreateItemCommand
+                    {
+                        ItemCatalogId = x.ItemCatalogId,
+                        IsLendable = x.IsLendable,
+                        DateCreated = x.DateCreated,
+                        Condition = x.Condition
+                    }).ToList());
+                var commandResult = await _dispatcher.Dispatch(command);
+                return FromResult(commandResult);
+            }
+            else
+            {
+                List<string> errors = result.Errors.Select(x => x.ErrorMessage).ToList();
+                return Error(errors);
+            }
+        }
+
+        [Route("createCatalogEntryWithAcquisitions")]
+        [HttpPost]
+        public async Task<IActionResult> CreateCatalogEntryWithAcquisitions(CreateCatalogEntryWithAcquisitionsRequestDto request)
+        {
+            CreateCatalogEntryWithAcquisitionsRequestDto.Validator validator = new CreateCatalogEntryWithAcquisitionsRequestDto.Validator();
+            var result = validator.Validate(request);
+            if (result.IsValid)
+            {
+                CreateCatalogEntryWithAcquisitionsCommand command = new CreateCatalogEntryWithAcquisitionsCommand(
+                    request.ISBN,
+                    request.Title,
+                    request.Description,
+                    request.SubjectArea,
+                    request.Type,
+                    request.Edition,
+                    request.Authors.Select(x => new CreateAuthorCommand
+                    {
+                        ItemCatalogId = x.ItemCatalogId,
+                        Name = x.Name
+                    }).ToList(),
+                    request.Acquisitions.Select(x => new CreateAcquisitionCommand
+                    {
+                        MemberId = x.MemberId,
+                        ItemCatalogId = x.ItemCatalogId,
+                        RequestDate = x.RequestDate,
+                        Amount = x.Amount
                     }).ToList());
                 var commandResult = await _dispatcher.Dispatch(command);
                 return FromResult(commandResult);
@@ -79,12 +129,6 @@ namespace GTL.API.Controllers
                 request.SubjectArea,
                 request.Type,
                 request.Edition,
-                request.Authors.Select(x => new UpdateAuthorCommand
-                {
-                    ItemCatalogId = x.ItemCatalogId,
-                    Name = x.Name,
-                    RowVersion = x.RowVersion
-                }).ToList(),
                 request.RowVersion);
             var commandResult = await _dispatcher.Dispatch(command);
             return FromResult(commandResult);

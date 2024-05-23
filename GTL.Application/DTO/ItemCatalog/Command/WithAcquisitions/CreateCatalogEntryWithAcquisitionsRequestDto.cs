@@ -1,10 +1,11 @@
-﻿using GTL.Application.DTO.Author.Command;
-using FluentValidation;
+﻿using FluentValidation;
+using GTL.Application.DTO.Acquisitions.Command;
+using GTL.Application.DTO.Author.Command;
 using GTL.Domain.Common;
 
-namespace GTL.Application.DTO.ItemCatalog.Command.WithAuthors
+namespace GTL.Application.DTO.ItemCatalog.Command.WithAcquisitions
 {
-    public class CreateCatalogEntryWithAuthorsRequestDto
+    public class CreateCatalogEntryWithAcquisitionsRequestDto
     {
         public string? ISBN { get; set; }
         public string Title { get; set; }
@@ -13,8 +14,9 @@ namespace GTL.Application.DTO.ItemCatalog.Command.WithAuthors
         public string Type { get; set; }
         public string? Edition { get; set; }
         public List<CreateAuthorRequestDto> Authors { get; set; }
+        public List<CreateAcquisitionRequestDto> Acquisitions { get; set; }
 
-        public class Validator : AbstractValidator<CreateCatalogEntryWithAuthorsRequestDto>
+        public class Validator : AbstractValidator<CreateCatalogEntryWithAcquisitionsRequestDto>
         {
             public Validator()
             {
@@ -23,6 +25,7 @@ namespace GTL.Application.DTO.ItemCatalog.Command.WithAuthors
                 RuleFor(r => r.SubjectArea).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(SubjectArea)).Code);
                 RuleFor(r => r.Type).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(Type)).Code);
                 RuleForEach(r => r.Authors).SetValidator(new CreateAuthorRequestDto.Validator());
+                RuleForEach(r => r.Acquisitions).SetValidator(new CreateAcquisitionRequestDto.Validator());
             }
         }
     }

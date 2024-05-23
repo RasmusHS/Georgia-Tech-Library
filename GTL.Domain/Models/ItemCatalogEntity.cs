@@ -7,10 +7,10 @@ namespace GTL.Domain.Models
     {
         public ItemCatalogEntity() 
         {
-            //Items = new List<ItemEntity>();
+            Items = new List<ItemEntity>();
             Authors = new List<AuthorEntity>();
-            //ReservedItems = new List<ReserveItemEntity>();
-            //AcquisitionItems = new List<AcquisitionEntity>();
+            ReservedItems = new List<ReserveItemEntity>();
+            AcquisitionItems = new List<AcquisitionEntity>();
         }
 
         private ItemCatalogEntity(string? isbn, string title, string description, string subjectArea, string type, string? edition) 

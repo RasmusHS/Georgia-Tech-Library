@@ -14,7 +14,6 @@ namespace GTL.Application.DTO.ItemCatalog.Command
         public string Type { get; set; }
         public string? Edition { get; set; }
         public byte[] RowVersion { get; set; }
-        public List<UpdateAuthorRequestDto> Authors { get; set; }
 
         public class Validator : AbstractValidator<UpdateCatalogEntryRequestDto>
         {
@@ -26,7 +25,6 @@ namespace GTL.Application.DTO.ItemCatalog.Command
                 RuleFor(r => r.Type).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(Type)).Code);
                 RuleFor(r => r.RowVersion).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(RowVersion)).Code);
                 RuleFor(r => r.RowVersion).NotNull().WithMessage(Errors.General.ValueIsRequired(nameof(RowVersion)).Code);
-                RuleForEach(r => r.Authors).SetValidator(new UpdateAuthorRequestDto.Validator());
             }
         }
     }

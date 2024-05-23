@@ -34,6 +34,7 @@ namespace GTL.Application.Queries.Member.Handlers
                 dto.SSN = member.SSN;
                 dto.CardExpirationDate = member.CardExpirationDate;
                 dto.EmployeePosition = member.EmployeePosition;
+                dto.RowVersion = member.RowVersion;
 
                 result.Add(dto);
             }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GTL.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240516122834_Initial")]
+    [Migration("20240523151142_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -43,6 +43,13 @@ namespace GTL.Persistence.Migrations
                         .HasColumnType("int")
                         .HasColumnName("amount");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion")
+                        .HasColumnName("row_version");
+
                     b.HasKey("MemberId", "ItemCatalogId", "RequestDate")
                         .HasName("pk_acquisition_entities");
 
@@ -54,7 +61,7 @@ namespace GTL.Persistence.Migrations
 
             modelBuilder.Entity("GTL.Domain.Models.AuthorEntity", b =>
                 {
-                    b.Property<Guid>("ItemCatalogId")
+                    b.Property<Guid?>("ItemCatalogId")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("item_catalog_id");
 

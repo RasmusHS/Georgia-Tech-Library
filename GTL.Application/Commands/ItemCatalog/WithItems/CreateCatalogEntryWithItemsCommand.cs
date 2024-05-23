@@ -1,10 +1,11 @@
 ﻿using GTL.Application.Commands.Author;
+using GTL.Application.Commands.Item;
 
-namespace GTL.Application.Commands.ItemCatalog
+namespace GTL.Application.Commands.ItemCatalog.WithItems
 {
-    public class CreateCatalogEntryWithAuthorsCommand : ICommand
+    public class CreateCatalogEntryWithItemsCommand : ICommand
     {
-        public CreateCatalogEntryWithAuthorsCommand(string? isbn, string title, string description, string subjectArea, string type, string? edition, List<CreateAuthorCommand>? authors)
+        public CreateCatalogEntryWithItemsCommand(string? isbn, string title, string description, string subjectArea, string type, string? edition, List<CreateAuthorCommand>? authors, List<CreateItemCommand>? items)
         {
             ISBN = isbn;
             Title = title;
@@ -13,6 +14,7 @@ namespace GTL.Application.Commands.ItemCatalog
             Type = type;
             Edition = edition;
             Authors = authors;
+            Items = items;
         }
 
         public string? ISBN { get; }
@@ -22,5 +24,6 @@ namespace GTL.Application.Commands.ItemCatalog
         public string Type { get; }
         public string? Edition { get; }
         public List<CreateAuthorCommand>? Authors { get; }
+        public List<CreateItemCommand>? Items { get; }
     }
 }

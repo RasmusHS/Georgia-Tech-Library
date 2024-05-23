@@ -2,13 +2,14 @@
 {
     public class QueryItemDto
     {
-        public QueryItemDto(Guid itemId, Guid itemCatalogId, bool isLendable, DateTime dateCreated, string condition)
+        public QueryItemDto(Guid itemId, Guid itemCatalogId, bool isLendable, DateTime dateCreated, string condition, byte[] rowVersion)
         {
             ItemId = itemId;
             ItemCatalogId = itemCatalogId;
             IsLendable = isLendable;
             DateCreated = dateCreated;
             Condition = condition;
+            RowVersion = rowVersion;
         }
 
         public QueryItemDto() { }
@@ -18,5 +19,6 @@
         public bool IsLendable { get; set; }
         public DateTime DateCreated { get; set; }
         public string Condition { get; set; }
+        public byte[] RowVersion { get; set; }
     }
 }

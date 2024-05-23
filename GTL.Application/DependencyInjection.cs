@@ -1,4 +1,6 @@
-﻿using GTL.Application.Commands.Member;
+﻿using GTL.Application.Commands.ItemCatalog.WithAcquisitions;
+using GTL.Application.Commands.ItemCatalog.WithItems;
+using GTL.Application.Commands.Member;
 using GTL.Application.DTO.Member.Query;
 using GTL.Application.Queries.Member;
 using GTL.Application.Queries.Member.Handlers;
@@ -29,7 +31,8 @@ namespace GTL.Application
             //services.AddScoped(typeof(), typeof());
 
             // ItemCatalog
-            //services.AddScoped(typeof(), typeof());
+            //services.AddScoped(typeof(ICommandHandler<CreateCatalogEntryWithItemsCommand>), typeof(CreateCatalogEntryWithItemsCommandHandler));
+            //services.AddScoped(typeof(ICommandHandler<CreateCatalogEntryWithAcquisitionsCommand>), typeof(CreateCatalogEntryWithAcquisitionsCommandHandler));
             //services.AddScoped(typeof(), typeof());
             //services.AddScoped(typeof(), typeof());
             //services.AddScoped(typeof(), typeof());

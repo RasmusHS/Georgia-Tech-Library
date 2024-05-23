@@ -27,23 +27,18 @@ namespace GTL.Application.Queries.ItemCatalog.Handlers
             foreach (var catalogEntry in catalogEntries) 
             {
                 QueryItemCatalogDto dto = new QueryItemCatalogDto();
+                dto.ItemCatalogId = catalogEntry.ItemCatalogId;
                 dto.ISBN = catalogEntry.ISBN;
                 dto.Title = catalogEntry.Title;
                 dto.Description = catalogEntry.Description;
                 dto.SubjectArea = catalogEntry.SubjectArea;
                 dto.Type = catalogEntry.Type;
                 dto.Edition = catalogEntry.Edition;
+                dto.RowVersion = catalogEntry.RowVersion;
 
-                var authors = await _authorRepository.GetAllAsync();
-                foreach (var author in authors)
-                {
-                    dto.Authors.Add(new QueryAuthorDto 
-                    { 
-                        ItemCatalogId = author.ItemCatalogId,
-                        Name = author.Name
-                    });
-                }
-
+                var authors = await _authorRepository.GetAllAsync(x => x.ItemCatalogId == catalogEntry.ItemCatalogId);
+                dto.Authors = _mapper.Map<List<QueryAuthorDto>>(authors);
+                
                 result.Add(dto);
             }
             return new CollectionResponseBase<QueryItemCatalogDto>()

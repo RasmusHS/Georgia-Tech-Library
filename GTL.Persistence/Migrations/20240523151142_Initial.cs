@@ -95,10 +95,11 @@ namespace GTL.Persistence.Migrations
                 name: "acquisition_entities",
                 columns: table => new
                 {
-                    item_catalog_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     member_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    item_catalog_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     request_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    amount = table.Column<int>(type: "int", nullable: false)
+                    amount = table.Column<int>(type: "int", nullable: false),
+                    row_version = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
