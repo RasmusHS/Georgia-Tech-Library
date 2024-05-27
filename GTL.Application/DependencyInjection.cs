@@ -1,6 +1,7 @@
 ﻿using GTL.Application.Commands.ItemCatalog.WithAcquisitions;
 using GTL.Application.Commands.ItemCatalog.WithItems;
 using GTL.Application.Commands.Member;
+using GTL.Application.Commands.Member.Handlers;
 using GTL.Application.DTO.Member.Query;
 using GTL.Application.Queries.Member;
 using GTL.Application.Queries.Member.Handlers;

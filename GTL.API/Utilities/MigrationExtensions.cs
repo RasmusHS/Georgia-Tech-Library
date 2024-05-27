@@ -12,9 +12,6 @@ namespace GTL.API.Utilities
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
             dbContext.Database.Migrate();
-            //dbContext.Database.EnsureCreated();
-
-            //dbContext.SaveChanges();
         }
     }
 }

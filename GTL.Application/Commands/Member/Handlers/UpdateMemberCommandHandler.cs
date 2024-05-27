@@ -2,13 +2,13 @@
 using GTL.Domain.Common;
 using GTL.Domain.Models;
 
-namespace GTL.Application.Commands.Member
+namespace GTL.Application.Commands.Member.Handlers
 {
     public class UpdateMemberCommandHandler : ICommandHandler<UpdateMemberCommand>
     {
         private readonly IGenericRepository<MemberEntity> _repository;
 
-        public UpdateMemberCommandHandler(IGenericRepository<MemberEntity> repository) 
+        public UpdateMemberCommandHandler(IGenericRepository<MemberEntity> repository)
         {
             _repository = repository;
         }
@@ -21,15 +21,15 @@ namespace GTL.Application.Commands.Member
             // Edit
             model.Edit(
                 //command.MemberId, 
-                command.Name, 
-                command.HomeAddress, 
-                command.CampusAddress, 
-                command.PhoneNumber, 
-                command.Email, 
-                command.Type, 
-                command.SSN, 
-                command.CardExpirationDate, 
-                command.EmployeePosition, 
+                command.Name,
+                command.HomeAddress,
+                command.CampusAddress,
+                command.PhoneNumber,
+                command.Email,
+                command.Type,
+                command.SSN,
+                command.CardExpirationDate,
+                command.EmployeePosition,
                 command.RowVersion
                 );
 

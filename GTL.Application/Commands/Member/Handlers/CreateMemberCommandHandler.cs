@@ -2,13 +2,13 @@
 using GTL.Domain.Common;
 using GTL.Domain.Models;
 
-namespace GTL.Application.Commands.Member
+namespace GTL.Application.Commands.Member.Handlers
 {
     public class CreateMemberCommandHandler : ICommandHandler<CreateMemberCommand>
     {
         private readonly IGenericRepository<MemberEntity> _repository;
 
-        public CreateMemberCommandHandler(IGenericRepository<MemberEntity> repository) 
+        public CreateMemberCommandHandler(IGenericRepository<MemberEntity> repository)
         {
             _repository = repository;
         }
@@ -17,8 +17,8 @@ namespace GTL.Application.Commands.Member
         {
             Result<MemberEntity> memberResult = MemberEntity.Create
                 (
-                command.Name, 
-                command.HomeAddress, 
+                command.Name,
+                command.HomeAddress,
                 command.CampusAddress,
                 command.PhoneNumber,
                 command.Email,
@@ -31,7 +31,7 @@ namespace GTL.Application.Commands.Member
             var member = await _repository.InsertAsync(memberResult);
             _repository.Save();
             return Result.Ok(member);
-            
+
         }
     }
 }

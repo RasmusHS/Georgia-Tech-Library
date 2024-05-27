@@ -2,13 +2,15 @@
 {
     public class CreateAcquisitionCommand : ICommand
     {
-        //public CreateAcquisitionCommand(Guid itemCatalogId, Guid memberId, DateTime requestDate, int amount) 
-        //{
-        //    ItemCatalogId = itemCatalogId;
-        //    MemberId = memberId;
-        //    RequestDate = requestDate;
-        //    Amount = amount;
-        //}
+        public CreateAcquisitionCommand(Guid memberId, Guid itemCatalogId, DateTime requestDate, int amount)
+        {
+            MemberId = memberId;
+            ItemCatalogId = itemCatalogId;
+            RequestDate = requestDate;
+            Amount = amount;
+        }
+
+        public CreateAcquisitionCommand() { }
 
         public Guid MemberId { get; set; }
         public Guid ItemCatalogId { get; set; }

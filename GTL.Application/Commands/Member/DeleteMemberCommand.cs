@@ -10,6 +10,6 @@ namespace GTL.Application.Commands.Member
             MemberId = memberId;
         }
 
-        public Guid MemberId { get; set;}
+        public Guid MemberId { get; set; }
     }
 }

@@ -2,13 +2,15 @@
 {
     public class CreateItemCommand : ICommand
     {
-        //public CreateItemCommand(Guid itemCatalogId, bool isLendable, DateTime dateCreated, string condition)
-        //{
-        //    ItemCatalogId = itemCatalogId;
-        //    IsLendable = isLendable;
-        //    DateCreated = dateCreated;
-        //    Condition = condition;
-        //}
+        public CreateItemCommand(Guid itemCatalogId, bool isLendable, DateTime dateCreated, string condition)
+        {
+            ItemCatalogId = itemCatalogId;
+            IsLendable = isLendable;
+            DateCreated = dateCreated;
+            Condition = condition;
+        }
+
+        public CreateItemCommand() { }
 
         public Guid ItemCatalogId { get; set; }
         public bool IsLendable { get; set; }

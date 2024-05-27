@@ -34,7 +34,12 @@ namespace GTL.Infrastructure.Repositories
 
         public async Task<T> GetByIdAsync(object id)
         {
-            return table.Find(id);
+            return await table.FindAsync(id);
+        }
+
+        public async Task<T> GetByIdAsync(object[] id)
+        {
+            return await table.FindAsync(id);
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -63,7 +68,15 @@ namespace GTL.Infrastructure.Repositories
             //This will mark the Entity State as Deleted
             table.Remove(existing);
         }
-        
+
+        public void Delete(object[] id)
+        {
+            //First, fetch the record from the table
+            T existing = table.Find(id);
+            //This will mark the Entity State as Deleted
+            table.Remove(existing);
+        }
+
         public void Save()
         {
             _context.SaveChanges();

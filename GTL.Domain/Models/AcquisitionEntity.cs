@@ -24,12 +24,12 @@ namespace GTL.Domain.Models
             return Result.Ok(new AcquisitionEntity(memberId, itemCatalogId, requestDate, amount));
         }
 
-        public void Edit(Guid memberId, Guid itemCatalogId, int amount, DateTime requestDate, byte[] rowVersion)
+        public void Edit(Guid memberId, Guid itemCatalogId, DateTime requestDate, int amount, byte[] rowVersion)
         {
             MemberId = memberId;
             ItemCatalogId = itemCatalogId;
-            Amount = amount;
             RequestDate = requestDate;
+            Amount = amount;
             RowVersion = rowVersion;
         }
 

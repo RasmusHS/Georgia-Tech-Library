@@ -29,9 +29,4 @@
     <ProjectReference Include="..\GTL.Domain\GTL.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Queries\Acquisitions\" />
-    <Folder Include="Queries\Author\" />
-  </ItemGroup>
-
 </Project>

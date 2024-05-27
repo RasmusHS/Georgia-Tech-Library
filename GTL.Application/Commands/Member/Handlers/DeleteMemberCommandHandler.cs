@@ -3,7 +3,7 @@ using GTL.Domain.Common;
 using GTL.Domain.Models;
 using EnsureThat;
 
-namespace GTL.Application.Commands.Member
+namespace GTL.Application.Commands.Member.Handlers
 {
     public class DeleteMemberCommandHandler : ICommandHandler<DeleteMemberCommand>
     {
