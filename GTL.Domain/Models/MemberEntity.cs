@@ -34,9 +34,8 @@ namespace GTL.Domain.Models
             return Result.Ok(new MemberEntity(name, homeAddress, campusAddress, phoneNumber, email, type, ssn, employeePosition));
         }
 
-        public void Edit(/*Guid memberId, */string name, string homeAddress, string? campusAddress, string phoneNumber, string email, string type, string ssn, DateTime cardExpirationDate, string? employeePosition, byte[] rowVersion)
+        public void Edit(string name, string homeAddress, string? campusAddress, string phoneNumber, string email, string type, string ssn, DateTime cardExpirationDate, string? employeePosition, byte[] rowVersion)
         {
-            //MemberId = memberId;
             Name = name;
             HomeAddress = homeAddress;
             CampusAddress = campusAddress;
@@ -49,16 +48,16 @@ namespace GTL.Domain.Models
             RowVersion = rowVersion;
         }
 
-        public Guid MemberId { get; private set; }
-        public string Name { get; private set; }
-        public string HomeAddress { get; private set; }
-        public string? CampusAddress { get; private set; }
-        public string PhoneNumber { get; private set; }
-        public string Email { get; private set; }
-        public string Type { get; private set; }
-        public string SSN { get; private set; }
-        public DateTime CardExpirationDate { get; private set; }
-        public string? EmployeePosition { get; private set; }
+        public Guid MemberId { get; set; }
+        public string Name { get; set; }
+        public string HomeAddress { get; set; }
+        public string? CampusAddress { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string Type { get; set; }
+        public string SSN { get; set; }
+        public DateTime CardExpirationDate { get; set; }
+        public string? EmployeePosition { get; set; }
 
         public List<ItemBorrowingsEntity> Borrowings { get; private set; }
         public List<ReserveItemEntity> ReservedItems { get; private set; }

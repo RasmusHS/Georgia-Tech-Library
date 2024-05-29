@@ -28,4 +28,9 @@
     <ProjectReference Include="..\GTL.Application\GTL.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ItemCatalog\WithItems\" />
+    <Folder Include="ItemCatalog\WithAcquisitions\" />
+  </ItemGroup>
+
 </Project>

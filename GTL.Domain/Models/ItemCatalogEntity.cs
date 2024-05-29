@@ -46,13 +46,13 @@ namespace GTL.Domain.Models
             RowVersion = rowVersion;
         }
 
-        public Guid ItemCatalogId { get; private set; }
-        public string? ISBN { get; private set; }
-        public string Title { get; private set; }
-        public string Description { get; private set; }
-        public string SubjectArea { get; private set; }
-        public string Type { get; private set; }
-        public string? Edition { get; private set; }
+        public Guid ItemCatalogId { get; set; }
+        public string? ISBN { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string SubjectArea { get; set; }
+        public string Type { get; set; }
+        public string? Edition { get; set; }
 
         public List<ItemEntity> Items { get; private set; }
         public List<AuthorEntity> Authors { get; private set; }

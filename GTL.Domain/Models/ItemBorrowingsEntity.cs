@@ -36,14 +36,14 @@ namespace GTL.Domain.Models
             RowVersion = rowVersion;
         }
 
-        public Guid MemberId { get; private set; }
+        public Guid MemberId { get; set; }
         public MemberEntity Members { get; private set; } // FK
 
-        public Guid ItemId { get; private set; }
+        public Guid ItemId { get; set; }
         public ItemEntity Items { get; private set; } // FK
 
-        public DateTime Due {  get; private set; }
-        public DateTime StartDate { get; private set; }
-        public DateTime? ReturnedDate { get; private set; }
+        public DateTime Due {  get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? ReturnedDate { get; set; }
     }
 }

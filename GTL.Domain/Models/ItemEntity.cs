@@ -34,14 +34,14 @@ namespace GTL.Domain.Models
             RowVersion = rowVersion;
         }
 
-        public Guid ItemId { get; private set; }
+        public Guid ItemId { get; set; }
 
-        public Guid ItemCatalogId { get; private set; }
+        public Guid ItemCatalogId { get; set; }
         public ItemCatalogEntity Catalog { get; private set; } // FK
 
-        public bool IsLendable { get; private set; }
-        public DateTime DateCreated { get; private set; }
-        public string Condition { get; private set; }
+        public bool IsLendable { get; set; }
+        public DateTime DateCreated { get; set; }
+        public string Condition { get; set; }
 
         // Many-to-many mapping with Member
         public List<ItemBorrowingsEntity> Borrowings { get; private set;}

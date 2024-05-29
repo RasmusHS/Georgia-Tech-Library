@@ -27,9 +27,9 @@ namespace GTL.Domain.Models
             RowVersion = rowVersion;
         }
 
-        public Guid? ItemCatalogId { get; private set; }
+        public Guid? ItemCatalogId { get; set; }
         public ItemCatalogEntity Catalog { get; private set; }
 
-        public string Name { get; private set; }
+        public string Name { get; set; }
     }
 }

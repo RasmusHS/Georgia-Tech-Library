@@ -33,13 +33,13 @@ namespace GTL.Domain.Models
             RowVersion = rowVersion;
         }
 
-        public Guid MemberId { get; private set; }
+        public Guid MemberId { get; set; }
         public MemberEntity Members { get; private set; } // FK
 
-        public Guid ItemCatalogId { get; private set; }
+        public Guid ItemCatalogId { get; set; }
         public ItemCatalogEntity Catalog { get; private set; } // FK
 
-        public DateTime RequestDate { get; private set; }
-        public int Amount { get; private set; } 
+        public DateTime RequestDate { get; set; }
+        public int Amount { get; set; } 
     }
 }

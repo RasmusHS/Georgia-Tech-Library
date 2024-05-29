@@ -65,52 +65,6 @@ namespace GTL.Application.Commands.ItemCatalog.WithItems
             _authorRepository.Save();
             _itemRepository.Save();
             return Result.Ok(catalog);
-
-            //if (command.Authors != null && command.Authors.Count() != 0)
-            //{
-            //    List<AuthorEntity> authors = new List<AuthorEntity>();
-            //    foreach (var author in command.Authors)
-            //    {
-            //        Result<AuthorEntity> authorResult = AuthorEntity.Create
-            //            (
-            //            author.ItemCatalogId = catalogResult.Value.ItemCatalogId,
-            //            author.Name
-            //            );
-            //        if (authorResult.Failure) return authorResult;
-            //        authors.Add(authorResult);
-            //    }
-
-            //    await _authorRepository.InsertRangeAsync(authors);
-            //    catalog.Authors.AddRange(authors);
-            //    _catalogRepository.Save();
-            //    _authorRepository.Save();
-            //    return Result.Ok(catalog);
-            //}
-            //else if (command.Authors == null || command.Authors.Count() == 0)
-            //{
-            //    _catalogRepository.Save();
-            //    return Result.Ok(catalog);
-            //}
-            //else
-            //{
-            //    return Result.Fail(catalogResult.Error);
-            //}
-
-            //foreach (var author in command.Authors)
-            //{
-            //    Result<AuthorEntity> authorResult = AuthorEntity.Create
-            //        (
-            //        author.ItemCatalogId = catalogResult.Value.ItemCatalogId,
-            //        author.Name
-            //        );
-            //    if (authorResult.Failure) return authorResult;
-            //    var authorEntity = await _authorRepository.InsertAsync(authorResult);
-            //    _authorRepository.Save();
-            //    catalog.Authors.Add(authorEntity);
-            //}
-            //_catalogRepository.Save();
-
-            //return Result.Ok(catalog);
         }
     }
 }
