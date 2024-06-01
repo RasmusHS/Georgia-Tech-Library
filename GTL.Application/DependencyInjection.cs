@@ -19,25 +19,6 @@ namespace GTL.Application
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddScoped<IDispatcher>(sp => new Dispatcher(sp.GetService<IMediator>()));
 
-            // Item
-            //services.AddScoped(typeof(), typeof());
-            //services.AddScoped(typeof(), typeof());
-            //services.AddScoped(typeof(), typeof());
-            //services.AddScoped(typeof(), typeof());
-
-            // ItemBorrowings
-            //services.AddScoped(typeof(), typeof());
-            //services.AddScoped(typeof(), typeof());
-            //services.AddScoped(typeof(), typeof());
-            //services.AddScoped(typeof(), typeof());
-
-            // ItemCatalog
-            //services.AddScoped(typeof(ICommandHandler<CreateCatalogEntryWithItemsCommand>), typeof(CreateCatalogEntryWithItemsCommandHandler));
-            //services.AddScoped(typeof(ICommandHandler<CreateCatalogEntryWithAcquisitionsCommand>), typeof(CreateCatalogEntryWithAcquisitionsCommandHandler));
-            //services.AddScoped(typeof(), typeof());
-            //services.AddScoped(typeof(), typeof());
-            //services.AddScoped(typeof(), typeof());
-
             // Member
             services.AddScoped(typeof(ICommandHandler<CreateMemberCommand>), typeof(CreateMemberCommandHandler));
             services.AddScoped(typeof(IQueryHandler<GetMemberQuery, QueryMemberDto>), typeof(GetMemberQueryHandler));

@@ -23,11 +23,6 @@ namespace GTL.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
-
-            //modelBuilder
-            //    .ApplyConfiguration(new MemberConfig())
-            //    .ApplyConfiguration(new BookCatalogConfig())
-            //    .ApplyConfiguration(new BookConfig());
         }
     }
 }

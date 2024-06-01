@@ -8,7 +8,6 @@ namespace GTL.Persistence.Config
     {
         public void Configure(EntityTypeBuilder<MemberEntity> builder)
         {
-            //builder.ToTable("Member", "member");
             builder.HasKey(x => x.MemberId);
             builder
                 .HasMany(x => x.Borrowings)
