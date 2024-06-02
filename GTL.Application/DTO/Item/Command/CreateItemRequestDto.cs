@@ -15,7 +15,7 @@ namespace GTL.Application.DTO.Item.Command
             public Validator()
             {
                 RuleFor(r => r.ItemCatalogId).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(ItemCatalogId)).Code);
-                RuleFor(r => r.IsLendable).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(IsLendable)).Code);
+                //RuleFor(r => r.IsLendable).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(IsLendable)).Code);
                 RuleFor(r => r.DateCreated).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(DateCreated)).Code);
                 RuleFor(r => r.Condition).NotEmpty().WithMessage(Errors.General.ValueIsRequired(nameof(Condition)).Code);
             }
