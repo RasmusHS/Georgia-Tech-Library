@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using GTL.Application.DTO.ItemBorrowerings.Query;
+using GTL.Application.DTO.ItemBorrowings.Query;
 using GTL.Domain.Common;
 
 namespace GTL.Application.Queries.ItemBorrowings.Handlers

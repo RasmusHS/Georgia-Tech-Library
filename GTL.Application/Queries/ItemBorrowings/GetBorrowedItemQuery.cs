@@ -1,4 +1,4 @@
-﻿using GTL.Application.DTO.ItemBorrowerings.Query;
+﻿using GTL.Application.DTO.ItemBorrowings.Query;
 using EnsureThat;
 
 namespace GTL.Application.Queries.ItemBorrowings

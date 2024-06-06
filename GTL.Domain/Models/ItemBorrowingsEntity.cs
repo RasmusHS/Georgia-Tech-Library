@@ -42,8 +42,8 @@ namespace GTL.Domain.Models
         public Guid ItemId { get; set; }
         public ItemEntity Items { get; private set; } // FK
 
-        public DateTime Due {  get; set; }
         public DateTime StartDate { get; set; }
+        public DateTime Due { get; set; }
         public DateTime? ReturnedDate { get; set; }
     }
 }
