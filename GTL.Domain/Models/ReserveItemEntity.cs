@@ -23,10 +23,11 @@ namespace GTL.Domain.Models
             return Result.Ok(new ReserveItemEntity(memberId, itemCatalogId, amount));
         }
 
-        public void Edit(Guid memberId, Guid itemCatalogId, int amount, byte[] rowVersion)
+        public void Edit(Guid memberId, Guid itemCatalogId, DateTime dateReserved, int amount, byte[] rowVersion)
         {
             MemberId = memberId;
             ItemCatalogId = itemCatalogId;
+            DateReserved = dateReserved;
             Amount = amount;
             RowVersion = rowVersion;
         }

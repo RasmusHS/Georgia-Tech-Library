@@ -30,6 +30,6 @@ namespace GTL.Domain.Models
         public Guid? ItemCatalogId { get; set; }
         public ItemCatalogEntity Catalog { get; private set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } // TODO: Ændre til at være en rich property, der bruger et ValueObject "Name"
     }
 }

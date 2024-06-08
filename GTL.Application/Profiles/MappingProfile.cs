@@ -5,6 +5,7 @@ using GTL.Application.DTO.Item.Query;
 using GTL.Application.DTO.ItemBorrowings.Query;
 using GTL.Application.DTO.ItemCatalog.Query;
 using GTL.Application.DTO.Member.Query;
+using GTL.Application.DTO.ReserveItem.Query;
 using GTL.Domain.Models;
 
 namespace GTL.Application.Profiles
@@ -20,6 +21,7 @@ namespace GTL.Application.Profiles
             CreateMap<MemberEntity, QueryMemberDto>().ReverseMap();
             CreateMap<AuthorEntity, QueryAuthorDto>().ReverseMap();
             CreateMap<AcquisitionEntity, QueryAcquisitionDto>().ReverseMap();
+            CreateMap<ReserveItemEntity, QueryReservationsDto>().ReverseMap();
         }
     }
 }

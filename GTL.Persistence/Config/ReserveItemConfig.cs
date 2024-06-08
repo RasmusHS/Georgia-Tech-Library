@@ -11,8 +11,8 @@ namespace GTL.Persistence.Config
             builder
                 .HasKey(x => new
                 {
-                    x.ItemCatalogId,
-                    x.MemberId
+                    x.MemberId,
+                    x.ItemCatalogId
                 });
             builder
                 .HasOne(x => x.Members)

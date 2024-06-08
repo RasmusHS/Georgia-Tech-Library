@@ -49,13 +49,13 @@ namespace GTL.Domain.Models
         }
 
         public Guid MemberId { get; set; }
-        public string Name { get; set; }
-        public string HomeAddress { get; set; }
-        public string? CampusAddress { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
+        public string Name { get; set; } // TODO: Ændre til at være en rich property, der bruger et ValueObject "Name"
+        public string HomeAddress { get; set; } // TODO: Ændre til at være en rich property, der bruger et ValueObject "Address"
+        public string? CampusAddress { get; set; } // TODO: Ændre til at være en rich property, der bruger et ValueObject "Address"
+        public string PhoneNumber { get; set; } // TODO: Ændre til at være en rich property, der bruger et ValueObject "PhoneNumber", der tjekker om det er et gyldigt telefonnummer
+        public string Email { get; set; } // TODO: Ændre til at være en rich property, der bruger et ValueObject "Email" der tjekker om det er en gyldig email
         public string Type { get; set; }
-        public string SSN { get; set; }
+        public string SSN { get; set; } // TODO: Ændre til at være en rich property, der bruger et ValueObject "SSN" der tjekker om det er et gyldigt CPR-nummer og overvej at kryptere det
         public DateTime CardExpirationDate { get; set; }
         public string? EmployeePosition { get; set; }
 
