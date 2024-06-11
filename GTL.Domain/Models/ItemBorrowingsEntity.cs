@@ -26,12 +26,12 @@ namespace GTL.Domain.Models
             return Result.Ok(new ItemBorrowingsEntity(memberId, itemId, due, startDate, returnedDate));
         }
 
-        public void Edit(Guid memberId, Guid itemId, DateTime due, DateTime startDate, DateTime? returnedDate, byte[] rowVersion)
+        public void Edit(Guid memberId, Guid itemId, DateTime startDate, DateTime due, DateTime? returnedDate, byte[] rowVersion)
         {
             MemberId = memberId;
             ItemId = itemId;
-            Due = due;
             StartDate = startDate;
+            Due = due;
             ReturnedDate = returnedDate;
             RowVersion = rowVersion;
         }
