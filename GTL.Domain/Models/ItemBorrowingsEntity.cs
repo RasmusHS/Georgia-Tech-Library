@@ -7,23 +7,23 @@ namespace GTL.Domain.Models
     {
         public ItemBorrowingsEntity() { }
         
-        private ItemBorrowingsEntity(Guid memberId, Guid itemId, DateTime due, DateTime startDate, DateTime? returnedDate) 
+        private ItemBorrowingsEntity(Guid memberId, Guid itemId, DateTime startDate, DateTime due, DateTime? returnedDate) 
         { 
             MemberId = memberId;
             ItemId = itemId;
-            Due = due;
             StartDate = startDate;
+            Due = due;
             ReturnedDate = returnedDate;
         }
 
-        public static Result<ItemBorrowingsEntity> Create(Guid memberId, Guid itemId, DateTime due, DateTime startDate, DateTime? returnedDate) 
+        public static Result<ItemBorrowingsEntity> Create(Guid memberId, Guid itemId, DateTime startDate, DateTime due, DateTime? returnedDate) 
         {
             Ensure.That(memberId, nameof(memberId)).IsNotEmpty();
             Ensure.That(itemId, nameof(itemId)).IsNotEmpty();
-            Ensure.That(due, nameof(due));
             Ensure.That(startDate, nameof(startDate));
+            Ensure.That(due, nameof(due));
             Ensure.That(returnedDate, nameof(returnedDate));
-            return Result.Ok(new ItemBorrowingsEntity(memberId, itemId, due, startDate, returnedDate));
+            return Result.Ok(new ItemBorrowingsEntity(memberId, itemId, startDate, due, returnedDate));
         }
 
         public void Edit(Guid memberId, Guid itemId, DateTime startDate, DateTime due, DateTime? returnedDate, byte[] rowVersion)
